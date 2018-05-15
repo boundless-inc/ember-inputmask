@@ -1,4 +1,5 @@
 import OneWayInputMask, { DEFAULT_NON_BOUND_PROPS } from 'ember-inputmask/components/one-way-input-mask';
+import { assign } from '@ember/polyfills';
 import { get, set } from '@ember/object';
 import { isBlank } from '@ember/utils';
 
@@ -25,7 +26,7 @@ export default OneWayInputMask.extend({
   init() {
     this._super(...arguments);
 
-    set(this, '_options', Object.assign({}, get(this, '_options'), DEFAULT_OPTIONS));
+    set(this, '_options', assign({}, get(this, '_options'), DEFAULT_OPTIONS));
 
     if (get(this, 'decimal')) {
       set(this, 'mask', 'decimal');
